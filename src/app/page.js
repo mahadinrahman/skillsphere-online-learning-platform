@@ -11,6 +11,7 @@ export default function Home() {
        <HighstRate></HighstRate>
        <StudyTechnique></StudyTechnique>
        <Instructor></Instructor>
+       
     </div>
   );
 }

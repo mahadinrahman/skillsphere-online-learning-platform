@@ -45,7 +45,7 @@ const NavBar = () => {
               )}
             </svg>
           </button>
-          <p className="font-bold  text-xl flex items-center gap-2 text-fuchsia-900 "><GraduationCap className="w-8 h-8"/>SkillSphere</p>
+          <p className="font-bold md:font-extrabold text-lg md:text-2xl flex items-center gap-2 text-fuchsia-900 "><GraduationCap className="w-8 h-8"/>SkillSphere</p>
         </div>
         <ul className="hidden items-center gap-4 md:flex">
             <li><Link href="/" className={` ${pathname === "/" ? "font-bold text-fuchsia-900" : ""}`}>Home</Link></li>
