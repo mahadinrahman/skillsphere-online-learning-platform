@@ -1,23 +1,99 @@
-
+'use client';
 import Link from "next/link";
 import {GraduationCap} from '@gravity-ui/icons';
+import { Button } from "@heroui/react";
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
+
+  const pathname = usePathname();
+
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <div>
             <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
-  <header className="flex h-16 items-center justify-between px-6">
-    <div className="flex items-center gap-3">
-      
-      <p className="font-extrabold text-2xl flex items-center gap-2 text-fuchsia-900 "><GraduationCap className="w-8 h-8"/>SkillSphere</p>
+      <header className="flex h-16 items-center justify-between px-6">
+        <div className="flex items-center gap-4">
+          <button
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className="sr-only">Menu</span>
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+          <p className="font-bold  text-xl flex items-center gap-2 text-fuchsia-900 "><GraduationCap className="w-8 h-8"/>SkillSphere</p>
+        </div>
+        <ul className="hidden items-center gap-4 md:flex">
+            <li><Link href="/" className={` ${pathname === "/" ? "font-bold text-fuchsia-900" : ""}`}>Home</Link></li>
+      <li><Link href="/courses" className={` ${pathname === "/courses" ? "font-bold text-fuchsia-900" : ""}`}>Courses</Link></li>
+      <li><Link href="/profile" className={` ${pathname === "/profile" ? "font-bold text-fuchsia-900" : ""}`}>My Profile</Link></li>
+        </ul>
+
+         <div className="space-x-2 flex ">
+    <Link href="/signin">
+      <Button  variant={pathname === "/signin" ? "primary" : "secondary"} >
+        Sign In
+      </Button>
+    </Link>
+    <Link href="/register">
+      <Button    variant={pathname === "/register" ? "primary" : "secondary"} >
+        Register
+      </Button>
+    </Link>
     </div>
-    <ul className="flex items-center gap-4">
-      <li><Link href="/">Home</Link></li>
-      <li><Link href="/courses">Courses</Link></li>
-      <li><Link href="/profile">My Profile</Link></li>
-    </ul>
-  </header>
-</nav>
+      </header>
+      {isMenuOpen && (
+        <div className="border-t border-separator md:hidden">
+          <ul className="flex flex-col gap-2 p-4">
+            <li>
+              <Link href="/" className={`block py-2 ${pathname === "/" ? "font-bold text-fuchsia-900" : ""}`}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/courses" className={`block py-2 ${pathname === "/courses" ? "font-bold text-fuchsia-900" : ""}`}>
+                Courses
+              </Link>
+            </li>
+            <li>
+              <Link href="/profile" className={`block py-2 ${pathname === "/profile" ? "font-bold text-fuchsia-900" : ""}`}>
+                My Profile
+              </Link>
+            </li>
+          </ul>
+          
+        </div>
+        
+      )}
+      
+    </nav>
+
+
+          
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import { GraduationCap } from '@gravity-ui/icons';
 import Link from "next/link";
-
+import Image from 'next/image';
 
 const Footer = () => {
     return (
@@ -35,44 +35,29 @@ const Footer = () => {
                             Marketing, and more.
                         </p>
                     </div>
-
-                    {/* Product */}
-                    <div>
-                        <h3 className="text-sm font-semibold text-black dark:text-white mb-4">
-                            Product
+                      <div className="space-y-4">
+                        <h3 className="text-sm font-semibold text-black dark:text-white">
+                            Start Your Learning Journey Today
                         </h3>
-                        <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                            <li>
-                                <Link
-                                    href="/generate"
-                                    className="hover:text-black dark:hover:text-white transition"
-                                >
-                                    Generate
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/photos"
-                                    className="hover:text-black dark:hover:text-white transition"
-                                >
-                                    Gallery
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/pricing"
-                                    className="hover:text-black dark:hover:text-white transition"
-                                >
-                                    Pricing
-                                </Link>
-                            </li>
-                        </ul>
+
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                            See all the features by creating an account. Join us and start your learning journey today!
+                        </p>
+
+                        <Link
+                            href="/register"
+                            className="inline-flex items-center justify-center px-5 py-2.5 rounded-full 
+              bg-black text-white dark:bg-white dark:text-black 
+              text-sm font-medium transition-all duration-200 
+              hover:scale-[1.02] hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-white/10"
+                        >
+                            Get Started
+                        </Link>
                     </div>
 
-                    {/* Company */}
-                    <div>
+                     <div>
                         <h3 className="text-sm font-semibold text-black dark:text-white mb-4">
-                            Company
+                            Useful Links
                         </h3>
                         <ul className="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                             <li>
@@ -88,7 +73,7 @@ const Footer = () => {
                                     href="/contact"
                                     className="hover:text-black dark:hover:text-white transition"
                                 >
-                                    Contact
+                                   Contact info
                                 </Link>
                             </li>
                             <li>
@@ -96,32 +81,22 @@ const Footer = () => {
                                     href="/terms"
                                     className="hover:text-black dark:hover:text-white transition"
                                 >
-                                    Terms
+                                    Terms & Conditions
                                 </Link>
                             </li>
                         </ul>
                     </div>
-
-                    {/* CTA Block */}
-                    <div className="space-y-4">
-                        <h3 className="text-sm font-semibold text-black dark:text-white">
-                            Start Your Learning Journey Today
+                     <div>
+                        <h3 className="text-sm font-semibold text-black dark:text-white mb-4">
+                           Social Links
                         </h3>
-
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                            See all the features by creating an account. Join us and start your learning journey today!
-                        </p>
-
-                        <Link
-                            href="/signup"
-                            className="inline-flex items-center justify-center px-5 py-2.5 rounded-full 
-              bg-black text-white dark:bg-white dark:text-black 
-              text-sm font-medium transition-all duration-200 
-              hover:scale-[1.02] hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-white/10"
-                        >
-                            Get Started
-                        </Link>
+                        <div className='flex space-x-2'>
+                        <Image src="/Facebook-Icon-PNG.png" alt="Facebook" width={32} height={32} className='rounded-full'/>
+                        <Image src="/sllmnhx-instagram-6338393_1920.png" alt="Instagram" width={32} height={32} className='rounded-full'/>
+                        <Image src="/Twitter-X-Logo-PNG.png" alt="Twitter" width={32} height={32} className='rounded-full'/>
+                        </div>
                     </div>
+                    
                 </div>
 
                 {/* Divider */}
@@ -129,7 +104,7 @@ const Footer = () => {
 
                 {/* Bottom */}
                 <div className="mt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
-                    <p>© {new Date().getFullYear()} pixgen. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} skillsphere. All rights reserved.</p>
 
                     <div className="flex items-center gap-6">
                         <Link
