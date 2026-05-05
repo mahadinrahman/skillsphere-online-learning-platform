@@ -6,7 +6,7 @@ const Instructor = () => {
             <section className="py-16 bg-gray-50">
       
       {/* Heading */}
-      <div className="text-center mb-12 px-4">
+      <div className="text-center mb-12 px-4 ">
         <h2 className="text-4xl font-bold text-gray-800">
           Top Instructors
         </h2>
@@ -16,10 +16,10 @@ const Instructor = () => {
       </div>
 
       {/* Grid */}
-      <div className="max-w-6xl mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 px-4">
+      <div className="max-w-6xl mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-4 px-4 ">
 
         {/* Card 1 */}
-        <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group">
+        <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group animate-animated animate-in">
           <img
             src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
             className="w-full h-40 object-cover group-hover:scale-105 transition"
@@ -32,7 +32,7 @@ const Instructor = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group">
+        <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group ">
           <img
             src="https://images.unsplash.com/photo-1555066931-4365d14bab8c"
             className="w-full h-40 object-cover group-hover:scale-105 transition"
@@ -45,7 +45,7 @@ const Instructor = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group">
+        <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group ">
           <img
             src="https://images.unsplash.com/photo-1559028012-481c04fa702d"
             className="w-full h-40 object-cover group-hover:scale-105 transition"
@@ -58,7 +58,7 @@ const Instructor = () => {
         </div>
 
         {/* Card 4 */}
-        <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group">
+        <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden group ">
           <img
             src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4"
             className="w-full h-40 object-cover group-hover:scale-105 transition"

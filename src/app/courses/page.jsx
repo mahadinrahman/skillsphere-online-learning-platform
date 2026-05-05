@@ -34,7 +34,7 @@ const AllCoursesPage = () => {
                     </Button>
                 </SearchField.Group>
             </SearchField>
-           <div className='grid grid-cols-1 md:grid-cols-3 gap-3 mt-13'>
+           <div className='grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-10 mt-13'>
 
 
                 {
