@@ -2,11 +2,12 @@
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { FcGoogle } from "react-icons/fc";
 
 
 const SignInPage = () => {
 
-    const onSubmit = async(e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const userdata = {};
@@ -15,20 +16,24 @@ const SignInPage = () => {
             userdata[key] = value.toString();
         });
         // 
-                const {data,error}=await authClient.signIn.email({
-                    password:userdata.password,
-                    email:userdata.email,
-                    callbackURL:"/",
-                })
-                console.log(data);
-                if(error){
-                    alert(`Error: ${error.message}`);
-                }else{
-               alert(`Sign-in successful: ${data?.user?.name || "User"}`);
-                }
-            }
-            // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
-        
+        const { data, error } = await authClient.signIn.email({
+            password: userdata.password,
+            email: userdata.email,
+            callbackURL: "/",
+        })
+        console.log(data);
+        if (error) {
+            alert(`Error: ${error.message}`);
+        } else {
+            alert(`Sign-in successful: ${data?.user?.name || "User"}`);
+        }
+    }
+    // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
+    const handleSignIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    };
 
     return (
         <div>
@@ -46,7 +51,7 @@ const SignInPage = () => {
                     }}
                 >
                     <Label>Email</Label>
-                    <Input  name="email" placeholder="Enter your email" />
+                    <Input name="email" placeholder="Enter your email" />
                     <FieldError />
                 </TextField>
                 <TextField
@@ -81,6 +86,8 @@ const SignInPage = () => {
                         Reset
                     </Button>
                 </div>
+                <p className=" font-semibold text-center text-lg">OR</p>
+                <Button onClick={handleSignIn} variant="outline" className="min-w-full"><FcGoogle></FcGoogle>Sign In with Google</Button>
             </Form>
         </div>
     );

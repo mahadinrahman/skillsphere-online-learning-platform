@@ -3,6 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
 
 
 const RegisterPage = () => {
@@ -30,9 +31,16 @@ const RegisterPage = () => {
         }else{
 
             router.push("/");
-      alert(`Sign-up successful: ${data?.user?.name || "User"}`);
+     alert(`Sign-up successful: ${data?.user?.name || "User"}`);
         }
     }
+
+     const handleRegister = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    };
+
     return (
         <div>
             <Form className="flex w-96 flex-col gap-4  mx-auto mt-13 px-6 py-11 shadow-[0_0_20px_rgba(0,0,0,0.15)] rounded-xl" onSubmit={onSubmit}>
@@ -103,6 +111,8 @@ const RegisterPage = () => {
                         Reset
                     </Button>
                 </div>
+                 <p className=" font-semibold text-center text-lg">OR</p>
+                <Button onClick={handleRegister} variant="outline" className="min-w-full"><FcGoogle></FcGoogle> Register with Google</Button>
             </Form>
         </div>
     );
