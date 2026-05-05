@@ -1,14 +1,16 @@
 'use client';
 import Link from "next/link";
 import {GraduationCap} from '@gravity-ui/icons';
-import { Button } from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 const NavBar = () => {
+    const userData = authClient.useSession();
+    const user = userData.data?.user;
 
   const pathname = usePathname();
-
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
@@ -52,9 +54,20 @@ const NavBar = () => {
       <li><Link href="/courses" className={` ${pathname === "/courses" ? "font-bold text-fuchsia-900" : ""}`}>Courses</Link></li>
       <li><Link href="/profile" className={` ${pathname === "/profile" ? "font-bold text-fuchsia-900" : ""}`}>My Profile</Link></li>
         </ul>
-
-         <div className="space-x-2 flex ">
-    <Link href="/signin">
+        {
+        user?
+        <div className="flex gap-2">
+        <Button variant="danger" onClick={async()=>{await authClient.signOut()}}>Sign Out</Button>
+         <Avatar>
+        <Avatar.Image alt="User Image" src={user?.image} />
+        <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
+      </Avatar>
+        </div>
+        
+        :
+        
+        <><div className="space-x-2 flex ">
+       <Link href="/signin">
       <Button  variant={pathname === "/signin" ? "primary" : "secondary"} >
         Sign In
       </Button>
@@ -64,7 +77,9 @@ const NavBar = () => {
         Register
       </Button>
     </Link>
-    </div>
+       </div></>}
+       
+
       </header>
       {isMenuOpen && (
         <div className="border-t border-separator md:hidden">
