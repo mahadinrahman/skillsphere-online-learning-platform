@@ -61,7 +61,7 @@ const NavBar = () => {
         <Button variant="danger" onClick={async()=>{await authClient.signOut(); toast.success("Signed out successfully!");}}>Sign Out</Button>
          <Avatar>
         <Avatar.Image alt="User Image" src={user?.image} />
-        <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
+        <Avatar.Fallback className="text-xl">{user?.name[0]}</Avatar.Fallback>
       </Avatar>
         </div>
         
