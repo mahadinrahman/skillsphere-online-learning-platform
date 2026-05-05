@@ -5,6 +5,7 @@ import { Avatar, Button } from "@heroui/react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
     const userData = authClient.useSession();
@@ -57,7 +58,7 @@ const NavBar = () => {
         {
         user?
         <div className="flex gap-2">
-        <Button variant="danger" onClick={async()=>{await authClient.signOut()}}>Sign Out</Button>
+        <Button variant="danger" onClick={async()=>{await authClient.signOut(); toast.success("Signed out successfully!");}}>Sign Out</Button>
          <Avatar>
         <Avatar.Image alt="User Image" src={user?.image} />
         <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
@@ -68,12 +69,12 @@ const NavBar = () => {
         
         <><div className="space-x-2 flex ">
        <Link href="/signin">
-      <Button  variant={pathname === "/signin" ? "primary" : "secondary"} >
+      <Button  className={pathname === "/signin" ? "bg-fuchsia-900 text-white font-bold" : "text-fuchsia-900 bg-white border-2 border-fuchsia-900 font-semibold"} >
         Sign In
       </Button>
     </Link>
     <Link href="/register">
-      <Button    variant={pathname === "/register" ? "primary" : "secondary"} >
+      <Button   className={pathname === "/register" ? "bg-fuchsia-900 text-white font-bold" : "text-fuchsia-900 bg-white border-2 border-fuchsia-900 font-semibold"}>
         Register
       </Button>
     </Link>

@@ -3,6 +3,7 @@ import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 
 const SignInPage = () => {
@@ -23,16 +24,18 @@ const SignInPage = () => {
         })
         console.log(data);
         if (error) {
-            alert(`Error: ${error.message}`);
+            toast.error(`Error: ${error.message}`);
         } else {
-            alert(`Sign-in successful: ${data?.user?.name || "User"}`);
+            toast.success(`Sign-in successful: ${data?.user?.name || "User"}`);
         }
     }
     // alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
     const handleSignIn = async () => {
         const data = await authClient.signIn.social({
             provider: "google",
+            
         });
+        
     };
 
     return (
@@ -87,7 +90,7 @@ const SignInPage = () => {
                     </Button>
                 </div>
                 <p className=" font-semibold text-center text-lg">OR</p>
-                <Button onClick={handleSignIn} variant="outline" className="min-w-full"><FcGoogle></FcGoogle>Sign In with Google</Button>
+                <Button onClick={handleSignIn} variant="outline" className="min-w-full" ><FcGoogle></FcGoogle>Sign In with Google</Button>
             </Form>
         </div>
     );
